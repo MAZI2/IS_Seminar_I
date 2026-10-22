@@ -5,12 +5,18 @@ import json
 import numpy as np
 import time
 import os
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parent
 import json
 from matplotlib import pyplot as plt
 from scipy.stats import linregress
 
 def read_benchmark_json(path):
-    with open(path, "r") as file:
+    path = Path(path)
+    if not path.is_absolute():
+        path = PROJECT_ROOT / path
+    with path.open("r") as file:
         loaded_data = json.load(file)
     return loaded_data
 
@@ -79,10 +85,13 @@ def show_benchmark_time_complexities(path):
     plt.show()
 
 def compare_runtimes(folder_path):
+    folder_path = Path(folder_path)
+    if not folder_path.is_absolute():
+        folder_path = PROJECT_ROOT / folder_path
     benchmarks = []
-    for file_name in os.listdir(folder_path):
+    for file_name in sorted(os.listdir(folder_path)):
         file_path = os.path.join(folder_path, file_name)
-        if os.path.isfile(file_path):
+        if os.path.isfile(file_path) and file_name.endswith(".json"):
             data = read_benchmark_json(file_path)
             no_ext = os.path.splitext(os.path.basename(file_path))[0]
             name = no_ext.split('/')[-1]

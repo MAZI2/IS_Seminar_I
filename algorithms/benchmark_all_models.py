@@ -5,6 +5,9 @@ import json
 import numpy as np
 import time
 import os
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 from basic_algorithm import run_algorithm as run_basic_algorithm
 from basic_repair_algorithm import run_algorithm as run_basic_repair_algorithm
@@ -32,9 +35,9 @@ def benchmark_on_dataset(dataset_path, run_function, iterations, verbose = 1):
 
 def benchmark_all_datasets(folder_path, run_func, iterations):
     dataset_results = []
-    for file_name in os.listdir(folder_path):
+    for file_name in sorted(os.listdir(folder_path)):
         dataset_file = os.path.join(folder_path, file_name)
-        if os.path.isfile(dataset_file):
+        if os.path.isfile(dataset_file) and file_name.endswith(".json"):
             
             max, mean, var, mean_runtime, var_runtime, dataset_id, num_papers, num_reviewers = benchmark_on_dataset(dataset_file, run_func, iterations)
 
@@ -55,8 +58,12 @@ def benchmark_all_datasets(folder_path, run_func, iterations):
 def make_benchmark_json(json_name, run_function, iterations=1, rerun = False):
     if rerun == False:
         return
-    folder_path = "datasets"
-    with open(json_name, "w") as file:
+    folder_path = PROJECT_ROOT / "datasets"
+    output_path = Path(json_name)
+    if not output_path.is_absolute():
+        output_path = PROJECT_ROOT / output_path
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with output_path.open("w") as file:
         data = benchmark_all_datasets(folder_path, run_function, iterations)
         json.dump(data, file, indent=4)
         print(json_name, "created")
