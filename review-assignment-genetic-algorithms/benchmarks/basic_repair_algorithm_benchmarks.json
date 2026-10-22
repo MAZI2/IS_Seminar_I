@@ -1,0 +1,82 @@
+[
+    {
+        "id": "Easy Dataset 1",
+        "papers": 5,
+        "reviewers": 5,
+        "max_score": 24.0,
+        "mean_score": 23.766666666666666,
+        "score_var": 0.2455555555555556,
+        "mean_runtime": 1105.9054,
+        "runtime_var": 2014.7546997733348
+    },
+    {
+        "id": "Easy Dataset 2",
+        "papers": 6,
+        "reviewers": 8,
+        "max_score": 47.0,
+        "mean_score": 40.86666666666667,
+        "score_var": 10.382222222222222,
+        "mean_runtime": 1383.8078,
+        "runtime_var": 1472.7045515599993
+    },
+    {
+        "id": "Hard Dataset 1",
+        "papers": 15,
+        "reviewers": 10,
+        "max_score": 128.0,
+        "mean_score": 106.53333333333333,
+        "score_var": 217.98222222222225,
+        "mean_runtime": 5838.624233333334,
+        "runtime_var": 10274.809157245572
+    },
+    {
+        "id": "Hard Dataset 2",
+        "papers": 20,
+        "reviewers": 12,
+        "max_score": 291.0,
+        "mean_score": 262.06666666666666,
+        "score_var": 221.39555555555555,
+        "mean_runtime": 7357.2673,
+        "runtime_var": 11494.31641927665
+    },
+    {
+        "id": "Hard Dataset 3",
+        "papers": 25,
+        "reviewers": 15,
+        "max_score": 250.0,
+        "mean_score": 188.33333333333334,
+        "score_var": 668.0222222222222,
+        "mean_runtime": 18262.5583,
+        "runtime_var": 95540.18706320977
+    },
+    {
+        "id": "Hard Dataset 4",
+        "papers": 30,
+        "reviewers": 18,
+        "max_score": 198.0,
+        "mean_score": 147.6,
+        "score_var": 532.7066666666667,
+        "mean_runtime": 31893.588600000003,
+        "runtime_var": 237318.7016709071
+    },
+    {
+        "id": "Medium Dataset 1",
+        "papers": 10,
+        "reviewers": 7,
+        "max_score": 96.0,
+        "mean_score": 79.4,
+        "score_var": 53.57333333333334,
+        "mean_runtime": 2528.587633333334,
+        "runtime_var": 3233.6304055655537
+    },
+    {
+        "id": "Medium Dataset 2",
+        "papers": 12,
+        "reviewers": 8,
+        "max_score": 128.0,
+        "mean_score": 96.93333333333334,
+        "score_var": 106.52888888888889,
+        "mean_runtime": 2984.0856,
+        "runtime_var": 2740.5321195066667
+    }
+]

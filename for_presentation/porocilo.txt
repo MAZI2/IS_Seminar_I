@@ -1,0 +1,39 @@
+1. adding the offspring and repair keeping review per paper constraint unchecked ... optimizing by this constraint and preference
+2. to explore wider space and escape local maxima we loosened the repair function with probability of repair.
+3. another method is adding a new constraint that broadens the search of potential solutions.
+3.1 some elitism is added
+4. separately 2. and 3. did not add meaningful improvements, but together a substantial improvement is observed.
+    2. does not explore a lot of solution space since we still have the same fitness function ... the randomness we get from crossover anyway.
+    3. does not explore a lot of solution space on its own since we are constraining it with our repair function. We need to loosen it.
+
+    repair_prob = 0.8
+    spread_weight = 0.2
+
+5. Added further diversify with (trying to) repair all the initial constraints but keeping the probabilty of repair quite low. 
+   With this we are broadening potential solutions further.
+
+    repair_prob = 0.2
+    spread_weight = 0.8
+
+6. Using swap for mutation was cruicial for performance. It serves as reassignment of review.
+
+... we are now able to solve all datasets regarding constraints. Can be improved regarding preference though.
+
+TODO:
+7. different selection criteria.
+
+Graphs for mutation rate...
+Graphs for different selection criteria (if there is any substantial difference)
+Graphs for 1. vs 4.
+for 4. it seems that increasing spread and decreasing probability can yield bigger maximums but also increases variability (expected for exploration?)
+    Test that
+Graphs for 4. vs 5.
+
+Note:
+Crossover functions don't differ much
+Elitism doesn't differ much
+Parents for mating don't differ much
+Population size around 1000 is the best
+Number of generations of 20-30 is enough since it always stagnates there. 
+    (Also tried to dinamically change different parameters when stagnation was detected, but it did not improve it)
+Increasing the importance of preference does not increase the score
